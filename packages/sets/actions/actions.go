@@ -9,7 +9,7 @@ type Action struct {
     Primitives []primitives.RawPrimitive `json:"primitives"`
 }
 
-func (y Action) Parse() ([]primitives.Primitive, error) {
+func (y Action) parse() ([]primitives.Primitive, error) {
     var prims []primitives.Primitive
     for _,r := range y.Primitives {
         if p,e := r.Parse(); e != nil {
