@@ -5,6 +5,7 @@ import (
 )
 
 type Action struct {
-    desc string
-    primitives []primitives.RawPrimitive
+    Desc string                          `json:"desc"`
+    Primitives []primitives.RawPrimitive `json:"primitives"`
+}
 }
