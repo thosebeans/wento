@@ -21,4 +21,19 @@ func (y Action) parse() ([]primitives.Primitive, error) {
     return prims,nil
 }
 
+func (y Action) Test() ([]string,error) {
+    var prims []primitives.Primitive
+    var errs  []string
+    if p,e := y.parse(); e != nil {
+        return errs,e
+    } else {
+        prims = p
+    }
+    for _,i := range prims {
+        if e := i.Test(); e != nil {
+            errs = append(errs, e.Error())
+        }
+    }
+    return errs,nil
+}
 
