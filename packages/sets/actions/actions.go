@@ -37,3 +37,17 @@ func (y Action) Test() ([]string,error) {
     return errs,nil
 }
 
+func (y Action) Emerge() error {
+    var prims []primitives.Primitive
+    if p,e := y.parse(); e != nil {
+        return e
+    } else {
+        prims = p
+    }
+    for _,i := range prims {
+        if e := i.Emerge(); e != nil {
+            return e
+        }
+    }
+    return nil
+}
