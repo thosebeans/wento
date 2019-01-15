@@ -1,7 +1,7 @@
 package primitives
 
 import (
-    "github/thosebeans/wento/packages/sets/actions/primitives/templateString"
+    "github/thosebeans/wento/packages/actions/primitives/templateString"
     "errors"
     "fmt"
 )
