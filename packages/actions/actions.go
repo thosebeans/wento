@@ -2,6 +2,8 @@ package actions
 
 import (
     "github/thosebeans/wento/packages/actions/primitives"
+    "errors"
+    "fmt"
 )
 
 type Action struct {
@@ -21,11 +23,11 @@ func (y Action) parse() ([]primitives.Primitive, error) {
     return prims,nil
 }
 
-func (y Action) Test() ([]string,error) {
+func (y Action) Test() error {
     var prims []primitives.Primitive
     var errs  []string
     if p,e := y.parse(); e != nil {
-        return errs,e
+        return e
     } else {
         prims = p
     }
@@ -34,7 +36,15 @@ func (y Action) Test() ([]string,error) {
             errs = append(errs, e.Error())
         }
     }
-    return errs,nil
+    if len(errs) > 0 {
+        var errStr string
+        for _,i := range errs {
+            errStr = fmt.Sprintf("%s\n%s", errStr, i)
+        }
+        return errors.New(errStr)
+    } else {
+        return nil
+    }
 }
 
 func (y Action) Emerge() error {
