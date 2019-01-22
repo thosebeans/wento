@@ -13,6 +13,8 @@ func ParseCli() error {
     switch os.Args[1] {
     case "emerge":
         return cliEmerge()
+    case "list":
+        return cliLs()
     default:
         return errors.New("no proper arguments given")
     }
