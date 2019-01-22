@@ -21,6 +21,8 @@ func ParseCli() error {
         return cliInit()
     case "help":
         return cliHelp()
+    case "clone":
+        return cliClone()
     default:
         return errors.New("no proper arguments given")
     }
