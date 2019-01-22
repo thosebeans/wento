@@ -25,6 +25,8 @@ func ParseCli() error {
         return cliClone()
     case "commit":
         return cliCommit()
+    case "pull":
+        return cliPull()
     default:
         return errors.New("no proper arguments given")
     }
