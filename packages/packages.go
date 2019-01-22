@@ -1,7 +1,7 @@
 package packages
 
 import (
-    "github/thosebeans/wento/packages/actions"
+    "github.com/thosebeans/wento/packages/actions"
     "encoding/json"
     "errors"
     "fmt"

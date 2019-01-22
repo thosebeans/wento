@@ -4,8 +4,8 @@ import (
     "os"
     "path"
     "errors"
-    "github/thosebeans/wento/globals"
-    "github/thosebeans/wento/packages"
+    "github.com/thosebeans/wento/globals"
+    "github.com/thosebeans/wento/packages"
 )
 
 func cliEmerge() error {

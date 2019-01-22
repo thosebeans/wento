@@ -2,7 +2,7 @@ package cli
 
 import (
     "os"
-    "github/thosebeans/wento/globals"
+    "github.com/thosebeans/wento/globals"
 )
 
 func cliLs() error {

@@ -5,8 +5,8 @@ import (
     "os/exec"
     "errors"
     "path"
-    "github/thosebeans/wento/globals"
-    "github/thosebeans/wento/filesystem"
+    "github.com/thosebeans/wento/globals"
+    "github.com/thosebeans/wento/filesystem"
 )
 
 func cliInit() error {

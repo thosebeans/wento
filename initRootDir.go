@@ -1,8 +1,8 @@
 package main
 
 import (
-    fs "github/thosebeans/wento/filesystem"
-    "github/thosebeans/wento/globals"
+    fs "github.com/thosebeans/wento/filesystem"
+    "github.com/thosebeans/wento/globals"
 )
 
 func initRootDir() error {

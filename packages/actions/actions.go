@@ -1,7 +1,7 @@
 package actions
 
 import (
-    "github/thosebeans/wento/packages/actions/primitives"
+    "github.com/thosebeans/wento/packages/actions/primitives"
     "errors"
     "fmt"
 )

@@ -3,7 +3,7 @@ package cli
 import (
     "os"
     "errors"
-    "github/thosebeans/wento/globals"
+    "github.com/thosebeans/wento/globals"
     "os/exec"
 )
 

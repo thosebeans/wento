@@ -1,7 +1,7 @@
 package main
 
 import (
-    "github/thosebeans/wento/cli"
+    "github.com/thosebeans/wento/cli"
 )
 
 func main() {

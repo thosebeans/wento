@@ -4,7 +4,7 @@ import (
     "os"
     "errors"
     "path"
-    "github/thosebeans/wento/globals"
+    "github.com/thosebeans/wento/globals"
 )
 
 func cliRemove() error {

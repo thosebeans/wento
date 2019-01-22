@@ -6,7 +6,7 @@ import (
     "path"
     "fmt"
     "errors"
-    "github/thosebeans/wento/globals"
+    "github.com/thosebeans/wento/globals"
 )
 
 type runPrimitive struct {

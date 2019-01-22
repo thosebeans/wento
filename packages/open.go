@@ -1,7 +1,7 @@
 package packages
 
 import (
-    "github/thosebeans/wento/globals"
+    "github.com/thosebeans/wento/globals"
     "path"
     "os"
     "io/ioutil"

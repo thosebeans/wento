@@ -1,9 +1,9 @@
 package primitives
 
 import (
-    fs "github/thosebeans/wento/filesystem"
+    fs "github.com/thosebeans/wento/filesystem"
     "errors"
-    "github/thosebeans/wento/globals"
+    "github.com/thosebeans/wento/globals"
 )
 
 type lnPrimitive struct {
