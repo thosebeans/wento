@@ -15,6 +15,8 @@ func ParseCli() error {
         return cliEmerge()
     case "list":
         return cliLs()
+    case "remove":
+        return cliRemove()
     default:
         return errors.New("no proper arguments given")
     }
