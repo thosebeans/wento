@@ -10,6 +10,8 @@ import (
 func cliRemove() error {
     if len(os.Args) < 3 {
         return errors.New("not enough arguments for remove")
+    } else if e := packageExists(os.Args[2]); e != nil {
+        return e
     } else if _,e := os.Open(path.Join(globals.GetRootDir(), os.Args[2])); e != nil {
         return e
     } else {
