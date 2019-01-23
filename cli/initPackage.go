@@ -2,7 +2,6 @@ package cli
 
 import (
     "os"
-    "os/exec"
     "errors"
     "path"
     "github.com/thosebeans/wento/globals"
@@ -21,6 +20,5 @@ func cliInit() error {
     } else if e := os.Chdir(path.Join(globals.GetRootDir(), os.Args[2])); e != nil {
         return e
     }
-    var cmd *exec.Cmd = exec.Command("git", "init")
-    return cmd.Run()
+    return commandExec("git", "init")
 }
