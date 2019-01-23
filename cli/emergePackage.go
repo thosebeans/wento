@@ -11,6 +11,8 @@ import (
 func cliEmerge() error {
     if len(os.Args) < 4 {
         return errors.New("no enough arguments for emerge")
+    } else if e := packageExists(os.Args[2]); e != nil {
+        return e
     } else if p,e := packages.OpenPackage(os.Args[2]); e != nil {
         return e
     } else if a,e := p.GetAction(os.Args[3]); e != nil {
