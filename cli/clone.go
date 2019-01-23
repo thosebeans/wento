@@ -4,7 +4,6 @@ import (
     "os"
     "errors"
     "github.com/thosebeans/wento/globals"
-    "os/exec"
 )
 
 func cliClone() error {
@@ -13,6 +12,5 @@ func cliClone() error {
     } else if e := os.Chdir(globals.GetRootDir()); e != nil {
         return e
     }
-    var cmd *exec.Cmd = exec.Command("git", "clone", os.Args[2])
-    return cmd.Run()
+    return commandExec("git", "clone", os.Args[2])
 }
