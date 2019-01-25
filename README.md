@@ -54,8 +54,6 @@ Install-Process:
 }
 ```
 
-**Note:** `desc`-attributes are currently not used
-
 ### string-templating
 wento uses Go's default templating-engine to include environment-variables in your paths  
 You can use them like this:  
