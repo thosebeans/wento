@@ -1,5 +1,5 @@
 # wento
-wento is a package-manager and automatation-framework, for your configurations.  
+wento is a package-manager and automatation-framework, for your configurations, on nix-like operating-systems.  
 --
 If you want to...
 - install your dotfiles on a new machine
