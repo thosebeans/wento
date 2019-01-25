@@ -4,6 +4,7 @@ import (
     fs "github.com/thosebeans/wento/filesystem"
     "errors"
     "github.com/thosebeans/wento/globals"
+    "path"
 )
 
 type lnPrimitive struct {
@@ -19,7 +20,11 @@ func (y lnPrimitive) Test() error {
 }
 
 func (y lnPrimitive) Emerge() error {
-    return fs.LinkSF(y.src, y.dst)
+    if e := fs.MkdirP(path.Dir(y.dst)); e != nil {
+        return e
+    } else {
+        return fs.LinkSF(y.src, y.dst)
+    }
 }
 
 func (y RawPrimitive) parseLn() (Primitive, error) {
