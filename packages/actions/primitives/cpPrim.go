@@ -4,6 +4,7 @@ import (
     fs "github.com/thosebeans/wento/filesystem"
     "github.com/thosebeans/wento/globals"
     "errors"
+    "path"
 )
 
 type cpPrimitive struct {
@@ -11,7 +12,11 @@ type cpPrimitive struct {
 }
 
 func (y cpPrimitive) Emerge() error {
-    return fs.CopyRF(y.src, y.dst)
+    if e := fs.MkdirP(path.Dir(y.dst)); e != nil {
+        return e
+    } else {
+        return fs.CopyRF(y.src, y.dst)
+    }
 }
 
 func (y RawPrimitive) parseCp() (Primitive, error) {
