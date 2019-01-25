@@ -5,6 +5,9 @@ import (
 )
 
 func main() {
+    if e := depCheck(); e != nil {
+        exitOne("%s\n", e.Error())
+    }
     if e := initRootDir(); e != nil {
         exitOne("%s\n", e.Error())
     }
