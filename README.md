@@ -87,5 +87,6 @@ You can use them like this:
 | `wento pull <PKG>` | Pull changes of `<PKG>` from its default remote-repository |
 | `wento init <PKG>` | Inits a new git-repository called `<PKG>` in `~/.wento` |
 | `wento remove <PKG>` | Removes `<PKG>` from `~/.wento` |
+| `wento info <PKG> <ACT>` | Show information of <ACT> in <PKG>, if <ACT> is omitted, information of <PKG> is shown |
 | `wento list` | Lists all packages |
 | `wento emerge <PKG> <ACT>` | Emerges all primitives of `<ACT>` in `<PKG>` |
