@@ -29,6 +29,8 @@ func ParseCli() error {
         return cliPull()
     case "push":
         return cliPush()
+    case "info":
+        return cliInfo()
     default:
         return errors.New("no proper arguments given")
     }
