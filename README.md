@@ -10,19 +10,14 @@ If you want to...
 
 
 ## Installation
-```
-!!!CAUTION!!!
-wento is still in heavy development and far from being bugfree.
-However, feel free to test it, if you want.
-```
 Dependencies:
-- **Go** (the program is developed with Go 1.11.4)
+- **Go** (the program is developed with Go 1.11.4), only for compilation from source
 - a posix conformant version of **cp**
 - **git**
 
 Install-Process:
 - execute `go install github.com/thosebeans/wento` in your shell
-- copy `$GOPATH/bin/wento` into your path
+- if your `$GOBIN` is contained in your path, you just installed it, else, copy `$GOPATH/bin/wento` into a directory of your path
 
 ## Usage
 ### Packages
@@ -79,6 +74,8 @@ You can use them like this:
 | Link | `["ln", "fileA", "fileB"` | Creates a symlink `fileB` that points to `fileA` |
 | Copy | `["cp", "fileA", "fileB"]`| Copy `fileA` to `fileB` |
 | Run | `["run", "fileA"]` | Execute `fileA` |
+
+**NOTE:** All primitives are executed from inside the package-directory
 
 ## cli
 | Command | Description |
