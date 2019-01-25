@@ -3,6 +3,7 @@ package filesystem
 import (
     "os"
     "errors"
+    "path"
 )
 
 func LinkSF(src, dst string) error {
@@ -15,5 +16,11 @@ func LinkSF(src, dst string) error {
     if e := RemoveRF(dst); e != nil {
         return e
     }
-    return os.Symlink(src, dst)
+    if path.IsAbs(src) {
+        return os.Symlink(src, dst)
+    } else if s,e := os.Getwd(); e != nil {
+        return e
+    } else {
+        return os.Symlink(path.Join(s, src), dst)
+    }
 }
