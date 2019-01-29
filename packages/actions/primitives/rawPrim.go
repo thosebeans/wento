@@ -19,6 +19,8 @@ func (y RawPrimitive) Parse() (Primitive, error) {
         return y.parseCp()
     case "run":
         return y.parseRun()
+    case "cmd":
+        return y.parseCmd()
     default:
         return nil,errors.New(fmt.Sprintf(
             "%s %s", y[0], "isnt a proper primitive",
