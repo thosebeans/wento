@@ -6,6 +6,6 @@ import (
 )
 
 func exitOne(formatStr string, Strs ...interface{}) {
-    fmt.Printf(formatStr, Strs...)
+    os.Stderr.Write([]byte(fmt.Sprintf(formatStr, Strs...)))
     os.Exit(1)
 }
