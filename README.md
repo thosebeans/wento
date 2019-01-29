@@ -73,6 +73,7 @@ You can use them like this:
 | Copy | `["cp", "fileA", "fileB"]`| Copy `fileA` to `fileB` |
 | Run | `["run", "fileA"]` | Execute `fileA` |
 | Command | `["cmd", "sudo", "apt", "update"]` | Execute a command, without invoking a shell |
+| Shell | `["shell", "bash", "echo $RANDOM \| md5sum"]` | Execute a command within a shell.  Supported shells are `sh`,`bash`,`zsh`,`ksh`. |
 
 **NOTE:** All primitives are executed from inside the package-directory
 
