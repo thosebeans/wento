@@ -72,6 +72,7 @@ You can use them like this:
 | Link | `["ln", "fileA", "fileB"` | Creates a symlink `fileB` that points to `fileA` |
 | Copy | `["cp", "fileA", "fileB"]`| Copy `fileA` to `fileB` |
 | Run | `["run", "fileA"]` | Execute `fileA` |
+| Command | `["cmd", "sudo", "apt", "update"]` | Execute a command, without invoking a shell |
 
 **NOTE:** All primitives are executed from inside the package-directory
 
