@@ -6,6 +6,7 @@ import (
     "errors"
     "github.com/thosebeans/wento/globals"
     "github.com/thosebeans/wento/packages"
+    "fmt"
 )
 
 func cliEmerge() error {
@@ -20,8 +21,10 @@ func cliEmerge() error {
     } else if e := os.Chdir(path.Join(globals.GetRootDir(), os.Args[2])); e != nil {
         return e
     } else if e := a.Test(); e != nil {
-        return e
+        return errors.New(fmt.Sprintf("Test-Errors:\n%s\n", e.Error()))
+    } else if e := a.Emerge(); e != nil {
+        return errors.New(fmt.Sprintf("Emerge-Errors:\n%s\n", e.Error()))
     } else {
-        return a.Emerge()
+        return nil
     }
 }
