@@ -2,30 +2,28 @@ package primitives
 
 import (
     "github.com/thosebeans/wento/packages/actions/primitives/templateString"
+    "github.com/thosebeans/wento/globals"
     "errors"
-    "fmt"
 )
 
 type RawPrimitive []templateString.TemplateString
 
 func (y RawPrimitive) Parse() (Primitive, error) {
+    var primSlice []string
     if len(y) == 0 {
         return nil,errors.New("primitive contains no data")
+    } else {
+        primSlice = make([]string, len(y))
+        for i,v := range y {
+            if s,e := v.Template(globals.GetEnvs()); e != nil {
+                return nil,e
+            } else {
+                primSlice[i] = s
+            }
+        }
     }
-    switch y[0] {
-    case "ln":
-        return y.parseLn()
-    case "cp":
-        return y.parseCp()
-    case "run":
-        return y.parseRun()
-    case "cmd":
-        return y.parseCmd()
-    case "shell":
-        return y.parseShell()
-    default:
-        return nil,errors.New(fmt.Sprintf(
-            "%s %s", y[0], "isnt a proper primitive",
-        ))
+    if f := primitives[(primSlice[0])]; f != nil {
+        return f(primSlice)
     }
+    return nil,errors.New("no proper primitive found")
 }
