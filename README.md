@@ -71,9 +71,7 @@ You can use them like this:
 |--|--|--|
 | Link | `["ln", "fileA", "fileB"` | Creates a symlink `fileB` that points to `fileA` |
 | Copy | `["cp", "fileA", "fileB"]`| Copy `fileA` to `fileB` |
-| Run | `["run", "fileA"]` | Execute `fileA` |
-| Command | `["cmd", "sudo", "apt", "update"]` | Execute a command, without invoking a shell |
-| Shell | `["shell", "bash", "echo $RANDOM \| md5sum"]` | Execute a command within a shell.  Supported shells are `sh`,`bash`,`zsh`,`ksh`. |
+| Run | `["run", "executable", "arg1", "arg2"]` | Execute `executable` with `arg`* |
 
 **NOTE:** All primitives are executed from inside the package-directory
 
