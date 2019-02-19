@@ -9,6 +9,10 @@ import (
     "github.com/thosebeans/wento/globals"
 )
 
+func init() {
+    primitives["run"] = parseRunPrim
+}
+
 type runPrimitive struct {
     srcPrimitive
 }
@@ -30,6 +34,15 @@ func (y runPrimitive) Emerge() error {
     cmd.Stdin  = os.Stdin
     cmd.Stderr = os.Stderr
     return cmd.Run()
+}
+
+func parseRunPrim(s []string) (Primitive, error) {
+    if len(s) == 1 {
+        return nil,errors.New("src or cmd missing")
+    }
+    var p runPrimitive
+    p.src = s[1]
+    return p,nil
 }
 
 func (y RawPrimitive) parseRun() (Primitive, error) {
