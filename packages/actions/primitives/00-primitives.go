@@ -5,3 +5,9 @@ func init() {
 }
 
 var primitives map[string]func([]string)(Primitive, error)
+
+func initPrimitives() {
+    if primitives == nil {
+        primitives = map[string](func([]string)(Primitive,error)){}
+    }
+}
