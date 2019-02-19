@@ -3,10 +3,7 @@ package primitives
 import (
     "os"
     "os/exec"
-    "path"
-    "fmt"
     "errors"
-    "github.com/thosebeans/wento/globals"
 )
 
 func init() {
@@ -14,26 +11,26 @@ func init() {
 }
 
 type runPrimitive struct {
-    srcPrimitive
+    exe  string
+    args []string
 }
 
 func (y runPrimitive) Test() error {
-    return y.testSrc()
+    if _,e := exec.LookPath(y.exe); e == nil  {
+        return nil
+    } else if _,e := os.Open(y.exe); e == nil {
+        return nil
+    } else {
+        return errors.New("no proper executable found")
+    }
 }
 
 func (y runPrimitive) Emerge() error {
-    var cmd *exec.Cmd
-    if path.IsAbs(y.src) {
-        cmd = exec.Command(y.src)
-    } else {
-        cmd = exec.Command(fmt.Sprintf(
-            "%s%s", "./", y.src,
-        ))
-    }
-    cmd.Stdout = os.Stdout
-    cmd.Stdin  = os.Stdin
-    cmd.Stderr = os.Stderr
-    return cmd.Run()
+    var c *exec.Cmd = exec.Command(y.exe, y.args...)
+    c.Stdout = os.Stdout
+    c.Stdin  = os.Stdin
+    c.Stderr = os.Stderr
+    return c.Run()
 }
 
 func parseRunPrim(s []string) (Primitive, error) {
@@ -41,19 +38,9 @@ func parseRunPrim(s []string) (Primitive, error) {
         return nil,errors.New("src or cmd missing")
     }
     var p runPrimitive
-    p.src = s[1]
-    return p,nil
-}
-
-func (y RawPrimitive) parseRun() (Primitive, error) {
-    if len(y) < 2 {
-        return nil,errors.New("run: src missing")
-    }
-    var p runPrimitive = runPrimitive{}
-    if s,e := y[1].Template(globals.GetEnvs()); e != nil {
-        return nil,e
-    } else {
-        p.src = s
+    p.exe = s[1]
+    if len(s) > 2 {
+        p.args = s[2:]
     }
     return p,nil
 }
