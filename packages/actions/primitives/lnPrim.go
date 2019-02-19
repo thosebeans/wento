@@ -3,7 +3,6 @@ package primitives
 import (
     fs "github.com/thosebeans/wento/filesystem"
     "errors"
-    "github.com/thosebeans/wento/globals"
     "path"
 )
 
@@ -41,23 +40,5 @@ func parseLnPrim(s []string) (Primitive, error) {
     var p lnPrimitive
     p.src = s[1]
     p.dst = s[2]
-    return p,nil
-}
-
-func (y RawPrimitive) parseLn() (Primitive, error) {
-    if len(y) < 2 {
-        return nil,errors.New("ln: src missing")
-    } else if len(y) < 3 {
-        return nil,errors.New("ln: dst missing")
-    }
-    var p lnPrimitive = lnPrimitive{}
-    if s,e0 := y[1].Template(globals.GetEnvs()); e0 != nil {
-        return nil,e0
-    } else if d,e1 := y[2].Template(globals.GetEnvs()); e1 != nil {
-        return nil,e1
-    } else {
-        p.src = s
-        p.dst = d
-    }
     return p,nil
 }
